@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: 0 auto;
+    align-items: center;
+}
+
+#navBar {
+    background-color:aliceblue;
+    height: 3em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.sticky {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

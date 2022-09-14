@@ -1,10 +1,8 @@
-<%- include('partials/header') -%>
 <div class="container">
   <div class="row mt-5">
       <div class="col-6">
           <div>
-              <p><strong>User Name</strong>: <%= user.userName %></p>
-              <p><strong>Email</strong>: <%= user.email %></p>
+              <p><strong><%= user.userName %></strong></p>
               <a href="/logout" class="col-3 btn btn-primary">Logout</a>
           </div>
           <div class="mt-5">
@@ -43,4 +41,4 @@
     </div>
   </div>
 </div>
-<%- include('partials/footer') -%>
+<%- include('partials/navBar') -%>
