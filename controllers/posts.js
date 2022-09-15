@@ -10,10 +10,17 @@ module.exports = {
       console.log(err);
     }
   },
+  getPostForm: async (req, res) => {
+    try {
+      res.render("/postForm.ejs");
+    } catch (err) {
+      console.log(err);
+    }
+  },
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
+      res.redirect("feed.ejs", { posts: posts });
     } catch (err) {
       console.log(err);
     }
@@ -40,7 +47,7 @@ module.exports = {
         user: req.user.id,
       });
       console.log("Post has been added!");
-      res.redirect("/profile");
+      res.redirect("/feed");
     } catch (err) {
       console.log(err);
     }
