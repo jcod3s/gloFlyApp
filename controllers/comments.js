@@ -1,39 +1,15 @@
-const cloudinary = require("../middleware/cloudinary");
-const Post = require("../models/Post");
+const Comment = require("../models/Comment");
 
 module.exports = {
-  getProfile: async (req, res) => {
+  getComments: async (req, res) => {
     try {
-      const posts = await Post.find({ user: req.user.id });
-      res.render("profile.ejs", { posts: posts, user: req.user });
+      const posts = await Comment.find();
+      res.render("post.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
     }
   },
-  getPostForm: async (req, res) => {
-    try {
-      res.render("postForm.ejs");
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getFeed: async (req, res) => {
-    try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getPost: async (req, res) => {
-    try {
-      const post = await Post.findById(req.params.id);
-      res.render("post.ejs", { post: post, user: req.user });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  createPost: async (req, res) => {
+  postComment: async (req, res) => {
     try {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
@@ -52,7 +28,14 @@ module.exports = {
       console.log(err);
     }
   },
-  likePost: async (req, res) => {
+  editComment: async(req,res) => {
+    try {
+        //jazz
+    } catch (err) {
+        console.log(err)
+    }
+  },
+  likeComment: async (req, res) => {
     try {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
@@ -66,7 +49,7 @@ module.exports = {
       console.log(err);
     }
   },
-  deletePost: async (req, res) => {
+  deleteComment: async (req, res) => {
     try {
       // Find post by id
       let post = await Post.findById({ _id: req.params.id });
