@@ -1,20 +1,17 @@
-# Install
+# Welcome to gloFly!
 
-`npm install`
+This is a fullstack app aimed at providing a platform for poeple looking for unique experiences all over the world.
 
----
-
-# Things to add
-
-- Create a `.env` file in config folder and add the following as `key = value`
-  - PORT = 2121 (can be any port example: 3000)
-  - DB_STRING = `your database URI`
-  - CLOUD_NAME = `your cloudinary cloud name`
-  - API_KEY = `your cloudinary api key`
-  - API_SECRET = `your cloudinary api secret`
+This build is using Cloudinary for image storage, mongoDB for text data, Express.js, React, and Node.js on the back end. The front end consists of HTML, CSS, and Javascript.
 
 ---
+#Progress
 
-# Run
+This is an active build in progess. Follow along and watch the app grow!
 
-`npm start`
+Features to add:
+- 
+-
+-
+-
+
