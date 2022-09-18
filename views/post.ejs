@@ -20,7 +20,7 @@
           method="POST"
           class="col-3"
         >
-          <button class="btn btn-primary fa fa-trash" type="submit"></button>
+          <button class="btn btn-primary fa fa-trash" type="submit">Delete Post</button>
         </form>
         <%}%>
       </div>
@@ -29,12 +29,20 @@
       <p><%= post.caption %></p>
     </div>
     <div>
-      <form action="/comments/postComment/<%= post._id%>?_method=POST">
+      <form action="/comments/postComment/<%= post._id%>" method=POST>
         <input type="text" placeholder="share your thoughts..." name="comment"></input>
         <input type="submit" value="Post">
       </form>
     </div>
     <div>
+      <% for(var i=0; i<comments.length; i++) {%>
+        <span>
+          <%= comments[i].userName %>
+        </span>
+        <div>
+          <%= comments[i].comment %>
+        </div>
+      <% } %>
     </div>
     <div class="col-6 mt-5">
       <a class="btn btn-primary" href="/profile">Return to Profile</a>
