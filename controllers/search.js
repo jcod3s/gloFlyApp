@@ -1,14 +1,8 @@
-const Search = require("../models/Post");
+// import { useRef, useEffect, useState } from 'react'
+// import * as tt from '@tomtom-international/web-sdk-maps'
 
 module.exports = {
-  loadMap: async (req,res) => {
-      
 
-        let map = tt.map({
-          key: process.env.TOM_TOM_API_KEY,
-          container: mapElement,
-        });
-    },
   getSearch: async (req, res) => {
       try {
         res.render("search.ejs");
