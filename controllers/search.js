@@ -12,7 +12,8 @@ module.exports = {
     },
   getLocation: async (req, res) => {
     try {
-        
+        const userLocation = navigator.geolocation.getCurrentPosition(console.log, console.log)
+        res(userLocation)
     } catch (err) {
       //
     }

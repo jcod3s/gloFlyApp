@@ -8,3 +8,7 @@ let center = [18,44.4]
     map.on('load', () => {
         new tt.Marker().setLngLat(center).addTo(map)
     })
+
+    map.on('load', () => {
+        fetch('/search/getLocation')
+    })
