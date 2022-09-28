@@ -5,46 +5,23 @@ module.exports = {
 
   getSearch: async (req, res) => {
       try {
-        res.render("search.ejs");
+        const pos = await fetch(`https://api.geoapify.com/v1/ipinfo?&apiKey=${process.env.GEO_APIFY_API_KEY}`)
+        .then(res => res.json())
+        .then(result => {
+          console.log(result)
+
+          const location = result.location
+          const lat = location.latitude;
+          const long = location.longitude;
+        })
+        .then(res => async (long,lat) =>{
+          const map = await fetch(`https://api.tomtom.com/map/1/tile/basic/main/20/${long}/${lat}.png?tileSize=256&view=Unified&language=NGT&key=${process.env.TOM_TOM_API_KEY}`)
+          res.render('search.ejs', {map: map})
+        })          
       } catch (err) {
         console.log(err);
       }
     },
-  
-    getLocation: async (req, res) => {
-    try {
-      const options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-      };
-      
-      async function success(pos) {
-        const crd = await pos.coords;
-        const lat = await crd.latitude;
-        const long = await crd.longitude;
-    
-        let center = [long,lat]
-        const map = tt.map({
-            key: process.env.TOM_TOM_API_KEY,
-            container: "map",
-            center: center,
-            zoom: 20
-        })
-        map.on('load', () => {
-            new tt.Marker().setLngLat(center).addTo(map)
-        })
-      }
-      
-      function error(err) {
-        console.warn(`ERROR(${err.code}): ${err.message}`);
-      }
-    
-    navigator.geolocation.getCurrentPosition(success, error, options)
-    } catch (err) {
-      //
-    }
-  },
   getMap: async (req, res) => {
     try {
       //
@@ -60,3 +37,35 @@ module.exports = {
     }
   }
 };
+
+
+
+// const map = async () => {
+//   try {
+//     const options = {
+//       enableHighAccuracy: true,
+//       timeout: 5000,
+//       maximumAge: 0
+//     };
+
+//     function success(pos) {
+//       const crd = pos.coords;
+//       const lat = crd.latitude;
+//       const long = crd.longitude;
+  
+//       let center = [long,lat]
+//       const map = tt.map({
+//           key: process.env.TOM_TOM_API_KEY,
+//           container: "map",
+//           center: center,
+//           zoom: 20
+//       })
+//       map.on('load', () => {
+//           new tt.Marker().setLngLat(center).addTo(map)
+//       })
+//     }
+//     const map = await navigator.geolocation.getCurrentPosition(success, error, options)
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };

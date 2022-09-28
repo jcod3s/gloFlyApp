@@ -6,8 +6,6 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 //Post Routes - simplified for now
 router.get("/getSearch", ensureAuth, searchController.getSearch);
 
-router.get("/getLocation", ensureAuth, searchController.getLocation);
-
 router.get("/getMap", searchController.getMap)
 
 router.get("/getExperiences", searchController.getExperiences)
