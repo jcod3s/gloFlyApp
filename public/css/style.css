@@ -15,9 +15,20 @@
 }
 
 
-
 .sticky {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+/* Specific pages styles */
+
+
+.bg {
+    /* background-image: url("../imgs/getOutThere.jpg"); */
+    background-color: #232A2D;
+}
+
+h1 {
+    color: #31c22c;
 }
