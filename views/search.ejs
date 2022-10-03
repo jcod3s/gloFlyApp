@@ -3,6 +3,14 @@
         <div id="map" style="width:40%;height:345px"><%= map %></div>
 
     </body>
+    <% for(var i=0; i<post.length; i++) {%>
+        <li class="col-6 justify-content-between mt-5">
+          <div class="col-3 mt-5">
+            <span><%= post[i].title %></span>
+            <p><%= post[i].description %></p>
+          </div>
+        </li>
+      <% } %>
 <%- include('partials/navBar') -%>
 <%- include('partials/searchFooter') -%>
 
