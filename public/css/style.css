@@ -1,13 +1,12 @@
 .container {
     display: flex;
     flex-direction: column;
-    width: 95%;
     margin: 0 auto;
     align-items: center;
 }
 
 #navBar {
-    background-color:aliceblue;
+    background-color:#8E989A;
     height: 3em;
     display: flex;
     flex-direction: row;
@@ -21,14 +20,21 @@
     width: 100%;
 }
 
-/* Specific pages styles */
-
-
+/* general page styles */
+a {
+    text-decoration: none;
+    color: black;
+}
 .bg {
-    /* background-image: url("../imgs/getOutThere.jpg"); */
     background-color: #232A2D;
 }
 
-h1 {
-    color: #31c22c;
+.m2 {
+    margin: 2em;
 }
+
+/* specific styles */
+.caption {
+    background-color: #818596;
+}
+
