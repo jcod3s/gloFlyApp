@@ -3,6 +3,7 @@
     flex-direction: column;
     margin: 0 auto;
     align-items: center;
+    text-align: left;
 }
 
 #navBar {
@@ -16,11 +17,22 @@
 
 .sticky {
     position: fixed;
-    bottom: 0;
     width: 100%;
 }
 
+.bottom {
+    bottom: 0;
+}
+
+.top {
+    top: 0;
+    z-index: 1;
+}
+
 /* general page styles */
+h1, h2, h3, span, p, label {
+    color: #8E989A;
+}
 a {
     text-decoration: none;
     color: black;

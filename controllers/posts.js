@@ -20,8 +20,9 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
+      const user = req.user.unserName
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
+      res.render("feed.ejs", { posts: posts, user: req.user.userName });
     } catch (err) {
       console.log(err);
     }
@@ -30,7 +31,7 @@ module.exports = {
     try {
       const post = await Post.findById(req.params.id);
       const comments = await Comment.find({postId: req.params.id}).sort({createdAt: "desc"}).lean();
-      res.render("post.ejs", { post: post, user: req.user, comments: comments });
+      res.render("post.ejs", { post: post, user: req.user, userName: req.userName, comments: comments });
     } catch (err) {
       console.log(err);
     }
@@ -49,7 +50,8 @@ module.exports = {
         city: req.body.city,
         description: req.body.description,
         likes: 0,
-        user: req.user.id,
+        userID: req.user.id,
+        userName: req.user.userName
       });
       console.log("Post has been added!");
       res.redirect("/feed");

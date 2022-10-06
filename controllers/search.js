@@ -1,11 +1,13 @@
 // import { useRef, useEffect, useState } from 'react'
 // import * as tt from '@tomtom-international/web-sdk-maps'
+const Post = require("../models/Post")
 
 module.exports = {
 
   getSearch: async (req, res) => {
       try {
-        res.render("search.ejs");
+        const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+        res.render('search.ejs', { posts: posts})
       } catch (err) {
         console.log(err);
       }
@@ -54,7 +56,8 @@ module.exports = {
   },
   getExperiences: async (req, res) => {
     try {
-      //use get experiences
+      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      res.render('search.ejs', { posts: posts})
     } catch (err) {
       //
     }
