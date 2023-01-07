@@ -1,26 +1,25 @@
-import { createRequire } from 'node:module';
-const require = createRequire(import.meta.url);
-
-const express = require("express");
+import express from "express";
 const app = express();
-const mongoose = require("mongoose");
-const passport = require("passport");
-const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
-const methodOverride = require("method-override");
-const flash = require("express-flash");
-const logger = require("morgan");
-const connectDB = require("./config/database");
-const mainRoutes = require("./routes/main");
-const searchRoutes = require("./routes/search")
-const postRoutes = require("./routes/posts");
-const commentRoutes = require("./routes/comments")
+import mongoose from "mongoose";
+import passport from "passport";
+import session from "express-session";
+import { default as connectMongoDBSession} from 'connect-mongodb-session';
+const MongoStore = connectMongoDBSession(session);
+import methodOverride from "method-override";
+import flash from "express-flash";
+import logger from "morgan";
+import connectDB from "./config/database";
+import mainRoutes from "./routes/main";
+import searchRoutes from "./routes/search";
+import postRoutes from "./routes/posts";
+import commentRoutes from "./routes/comments";
 
-//Use .env file in config folder
-require("dotenv").config({ path: "./config/.env" });
+//Import and use .env file in config folder
+import dotenv from "dotenv"
+dotenv.config({ path: "./config/.env" });
 
 // Passport config
-require("./config/passport")(passport);
+import passportConfig from "./config/passport"
 
 //Connect To Database
 connectDB();
