@@ -3,7 +3,7 @@ const app = express();
 import mongoose from "mongoose";
 import passport from "passport";
 import session from "express-session";
-import { default as connectMongoDBSession} from 'connect-mongodb-session';
+import { connectMongoDBSession} from 'connect-mongo';
 const MongoStore = connectMongoDBSession(session);
 import methodOverride from "method-override";
 import flash from "express-flash";
