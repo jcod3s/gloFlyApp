@@ -1,5 +1,5 @@
 // import { useRef, useEffect, useState } from 'react'
-import * as tt from '@tomtom-international/web-sdk-maps'
+const tt = require('@tomtom-international/web-sdk-maps');
 const Post = require("../models/Post")
 
 module.exports = {
