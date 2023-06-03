@@ -1,15 +1,15 @@
-const express = require("express");
-const router = express.Router();
-const searchController = require("../controllers/search");
-const { ensureAuth, ensureGuest } = require("../middleware/auth");
+// const express = require("express");
+// const router = express.Router();
+// const searchController = require("../controllers/search");
+// const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
-//Post Routes - simplified for now
-router.get("/getSearch", ensureAuth, searchController.getSearch);
+// //Post Routes - simplified for now
+// router.get("/getSearch", ensureAuth, searchController.getSearch);
 
-router.get("/getLocation", ensureAuth, searchController.getLocation);
+// router.get("/getLocation", ensureAuth, searchController.getLocation);
 
-router.get("/getMap", searchController.getMap)
+// router.get("/getMap", searchController.getMap)
 
-router.get("/getExperiences", searchController.getExperiences)
+// router.get("/getExperiences", searchController.getExperiences)
 
-module.exports = router;
+// module.exports = router;
