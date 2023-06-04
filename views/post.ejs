@@ -1,18 +1,17 @@
 <%- include('partials/header') -%>
-<body class="">
+<body class="container bg bgPost">
     <div class="container">
       <div class="">
         <h2 class="col"><%= post.title %></h2>
         <img class="img-fluid col" src="<%= post.image%>" />
-        <div class="row justify-content-start">
+        <div class="row justify-content-start my-1">
           <form
             class="col"
             action="/post/likePost/<%= post.id %>?_method=PUT"
             method="POST"
           >
-            <button class="col btn btn-primary fa fa-heart" type="submit"><%= post.likes %></button>
+            <button class="col btn btn-primary" type="submit"><i class="fa fa-heart mx-1"></i><%= post.likes %></button>
           </form>
-          <h3 class="col"><%= post.likes %></h3>
           <%if(post.user == user.id){ %>
             <!-- add edit form/button here -->
           <form
@@ -28,9 +27,12 @@
       <div class="">
         <p><%= post.caption %></p>
       </div>
-      <div>
+      <div class="my-1">
+        <%= post.description %>
+      </div>
+      <div class="my-1">
         <form action="/comments/postComment/<%= post._id%>" method=POST>
-          <input type="text" placeholder="share your thoughts..." name="comment"></input>
+          <input class="mr-auto" type="text" placeholder="share your thoughts..." name="comment"></input>
           <input type="submit" value="Post">
         </form>
       </div>
